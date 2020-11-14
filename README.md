@@ -3,7 +3,7 @@ todo-list 应用
 
 [参考设计稿](https://dribbble.com/shots/14100356-ToDo-App-UI)
 
-## 只有一个需求：90% 还原设计效果！
+## 只有一个需求：90% 还原设计稿效果！
 
 ## 安装
 ```bash
