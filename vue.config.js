@@ -4,13 +4,13 @@ module.exports = {
   publicPath: './',
   productionSourceMap: isProductionEnv ? false : true,
   devServer: {
-    proxy: {
-      '': {
-        target: '',
-        changeOrigin: true,
-        ws: true,
-        pathRewrite: {},
-      },
-    },
+    // proxy: {
+    //   '': {
+    //     target: '',
+    //     changeOrigin: true,
+    //     ws: true,
+    //     pathRewrite: {},
+    //   },
+    // },
   },
 }

@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
+  <div class="com-menu">
+    com-menu
   </div>
 </template>
 
@@ -8,8 +8,8 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'Home',
-  components: {
-  },
+  name: 'ComMenu',
 })
 </script>
+
+<style lang="scss" scoped></style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
+  <div class="com-top-bar">
+    ComTopBar
   </div>
 </template>
 
@@ -8,8 +8,8 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'Home',
-  components: {
-  },
+  name: 'ComTopBar',
 })
 </script>
+
+<style lang="scss" scoped></style>
