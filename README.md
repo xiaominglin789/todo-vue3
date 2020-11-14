@@ -1,24 +1,24 @@
 # todo-vue3
+todo-list 应用
 
-## Project setup
-```
-yarn install
-```
+[参考设计稿](https://dribbble.com/shots/14100356-ToDo-App-UI)
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## 只有一个需求：90% 还原设计效果！
 
-### Compiles and minifies for production
-```
-yarn build
+## 安装
+```bash
+git clone https://github.com/xiaominglin789/todo-vue3.git
+cd todo-vue3
+yarn
 ```
 
-### Lints and fixes files
+## 打包
 ```
-yarn lint
-```
+// development环境
+yarn build:dev
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+// production环境
+yarn build:prod
+or
+yarn build:report
+```
