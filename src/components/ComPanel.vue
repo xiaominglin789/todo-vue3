@@ -7,7 +7,15 @@
         <div v-for="(task, index) in tasks" :key="index" class="task-box">
           <p class="task-total">{{ task.total + 'tasks' }}</p>
           <h3 class="task-type">{{ task.type }}</h3>
-          <p class="task-progress">{{ task.prograss }}</p>
+          <!-- progress -->
+          <div class="task-progress task-progress-bar">
+            <div
+              class="task-progress-bar task-progress-hover"
+              :style="{
+                width: useComputedScale(task.complete, task.total) + '%',
+              }"
+            ></div>
+          </div>
         </div>
       </ul>
     </div>
@@ -34,20 +42,30 @@ export default defineComponent({
         {
           type: 'Business',
           total: 40,
-          prograss: 0.5,
+          complete: 15,
         },
         {
           type: 'Personal',
           total: 18,
-          prograss: 0.45,
+          complete: 10,
         },
-        {
-          type: 'Personal',
-          total: 18,
-          prograss: 0.45,
-        }
       ],
     },
+  },
+  setup() {
+    function useComputedScale(complete: number, total: number): number {
+      if (complete >= total) {
+        return 100
+      }
+      if (complete < 0) {
+        return 0
+      }
+      return (complete / total) * 100
+    }
+
+    return {
+      useComputedScale,
+    }
   },
 })
 </script>
@@ -89,7 +107,23 @@ export default defineComponent({
           font-size: 24px;
           color: #000;
         }
-        .task-progress {}
+        .task-progress {
+        }
+      }
+      /** progress-bar */
+      .task-progress {
+        background-color: rgb(199, 199, 199);
+        margin-top: 8px;
+      }
+      .task-progress-bar {
+        height: 6px;
+        width: 100%;
+        border-radius: 4px;
+      }
+      .task-progress-hover {
+        background-color: #7889e7;
+        width: 0%;
+        transition: all 0.3s linear;
       }
     }
   }

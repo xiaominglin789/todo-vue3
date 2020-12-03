@@ -11,7 +11,7 @@ import ComPanel from '@/components/ComPanel.vue'
 export default defineComponent({
   name: 'Home',
   components: {
-    ComPanel
+    ComPanel,
   },
 })
 </script>
