@@ -3,7 +3,7 @@
     <!-- 控制器 -->
     <input type="checkbox" name="open" id="open" class="open" />
     <label for="open" class="open-btns">
-      <i class="btn"></i>
+      <i class="iconfont icon-up"></i>
     </label>
     <!-- 菜单 -->
     <div class="slider">
@@ -94,29 +94,8 @@ export default defineComponent({
     cursor: pointer;
     transform: translateX(0px) rotate(0deg);
     transition: all 0.3s ease;
-    .btn {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      left: 25%;
-    }
-    .btn::before {
-      content: '';
-      width: 8px;
-      height: 1px;
-      border-radius: 1px;
-      background-color: rgba(0, 0, 0, 0.5);
-      position: absolute;
-      transform: translate(4px, -2px) rotate(-30deg);
-    }
-    .btn::after {
-      content: '';
-      width: 8px;
-      height: 1px;
-      border-radius: 1px;
-      background-color: rgba(0, 0, 0, 0.5);
-      position: absolute;
-      transform: translate(4px, 2px) rotate(30deg);
+    i {
+      transform: rotate(90deg);
     }
   }
   .open-btns:active {
@@ -217,11 +196,9 @@ export default defineComponent({
   #open:checked ~ .open-btns {
     transform: translateX(60vw) rotate(175deg);
     box-shadow: 0px 0px 10px #fff;
-    .btn::before {
-      background-color: #fff;
-    }
-    .btn::after {
-      background-color: #fff;
+    i {
+      transform: rotate(90deg);
+      color: #fff;
     }
   }
 }
