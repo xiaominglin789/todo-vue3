@@ -1,5 +1,9 @@
 <template>
   <div class="com-panel">
+    <div class="panel-top">
+      <span @click="onSearch"><i class="iconfont icon-search"></i></span>
+      <span @click="onNotice"><i class="iconfont icon-notice"></i></span>
+    </div>
     <h1 class="panel-title">{{ title }}</h1>
     <div class="panel-content">
       <p class="panel-text">{{ text }}</p>
@@ -12,7 +16,7 @@
             <div
               class="task-progress-bar task-progress-hover"
               :style="{
-                width: useComputedScale(task.complete, task.total) + '%',
+                width: useComputedRatio(task.complete, task.total) + '%',
               }"
             ></div>
           </div>
@@ -53,7 +57,8 @@ export default defineComponent({
     },
   },
   setup() {
-    function useComputedScale(complete: number, total: number): number {
+    /** 数值比例比 */
+    function useComputedRatio(complete: number, total: number): number {
       if (complete >= total) {
         return 100
       }
@@ -63,8 +68,18 @@ export default defineComponent({
       return (complete / total) * 100
     }
 
+    function onSearch() {
+      // alert('点击搜索,功能未实现')
+    }
+
+    function onNotice() {
+      // alert('点击通知,功能未实现')
+    }
+
     return {
-      useComputedScale,
+      useComputedRatio,
+      onSearch,
+      onNotice,
     }
   },
 })
@@ -72,7 +87,27 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .com-panel {
-  background: rgb(232, 243, 243);
+  .panel-top {
+    box-sizing: border-box;
+    width: 100%;
+    height: 72px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 24px;
+    span {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 8px;
+      i {
+        font-size: 24px;
+      }
+    }
+  }
   .panel-title {
     font-size: 36px;
     font-weight: 600;
