@@ -1,5 +1,5 @@
 <template>
-  <div class="com-panel">
+  <div :class="['com-panel', className]">
     <!-- 头部 -->
     <div class="panel-top">
       <span @click="onSearch"><i class="iconfont icon-search"></i></span>
@@ -34,6 +34,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'ComPanel',
   props: {
+    className: String,
     title: {
       type: String,
       default: "What's up, Joy!",
