@@ -8,9 +8,9 @@
     <!-- 菜单 -->
     <div class="slider">
       <header>
-        <img src="../assets/logo.png" alt="" />
+        <img :src="avatar" alt="" />
         <br />
-        Json Tikket
+        {{ name }}
       </header>
       <!-- 菜单 -->
       <ul v-if="menu && menu.length">
@@ -39,39 +39,20 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-type MenuType = {
-  title: string
-  icon: string
-  href: string
-}
-
 export default defineComponent({
   name: 'ComDrawer',
   props: {
+    avatar: {
+      type: String,
+      default: require('../assets/logo.png'),
+    },
+    name: {
+      type: String,
+      default: 'Hello kitty',
+    },
     menu: {
       type: Array,
-      default: () => [
-        {
-          title: 'Templates',
-          icon: 'icon-tag',
-          href: '#',
-        },
-        {
-          title: 'Categories',
-          icon: 'icon-category',
-          href: '#',
-        },
-        {
-          title: 'Analytics',
-          icon: 'icon-sector',
-          href: '#',
-        },
-        {
-          title: 'Settings',
-          icon: 'icon-setting',
-          href: '#',
-        },
-      ],
+      default: () => [],
     },
   },
   setup() {
