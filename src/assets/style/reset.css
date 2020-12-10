@@ -95,7 +95,7 @@ input:focus {
   zoom: 1;
 } /*==for IE6/7 Maxthon2==*/
 .clearfix:after {
-  content: '.';
+  content: '';
   display: block;
   clear: both;
 }
