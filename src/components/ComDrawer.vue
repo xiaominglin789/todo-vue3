@@ -13,16 +13,19 @@
         Json Tikket
       </header>
       <!-- 菜单 -->
-      <ul>
+      <ul v-if="menu && menu.length">
         <li
           v-for="(item, index) in menu"
           :key="index"
           :style="'--i:' + (index + 1)"
         >
-          <a href="#">
+          <router-link
+            to=""
+            @click.prevent="onClickMenuItem($event, item.title)"
+          >
             <i :class="['iconfont', item.icon]"></i>
             <span class="title">{{ item.title }}</span>
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -35,6 +38,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+
+type MenuType = {
+  title: string
+  icon: string
+  href: string
+}
 
 export default defineComponent({
   name: 'ComDrawer',
@@ -64,6 +73,16 @@ export default defineComponent({
         },
       ],
     },
+  },
+  setup() {
+    const onClickMenuItem = (e: Event, title: string) => {
+      console.log('只是弹窗提示:')
+      alert(title)
+    }
+
+    return {
+      onClickMenuItem,
+    }
   },
 })
 </script>
