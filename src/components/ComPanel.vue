@@ -1,13 +1,15 @@
 <template>
   <div class="com-panel">
+    <!-- 头部 -->
     <div class="panel-top">
       <span @click="onSearch"><i class="iconfont icon-search"></i></span>
       <span @click="onNotice"><i class="iconfont icon-notice"></i></span>
     </div>
     <h1 class="panel-title">{{ title }}</h1>
+    <!-- 内容 -->
     <div class="panel-content">
-      <p class="panel-text">{{ text }}</p>
-      <ul>
+      <p class="panel-subtitle">{{ subtitle }}</p>
+      <ul v-if="tasks && tasks.length">
         <div v-for="(task, index) in tasks" :key="index" class="task-box">
           <p class="task-total">{{ task.total + 'tasks' }}</p>
           <h3 class="task-type">{{ task.type }}</h3>
@@ -36,7 +38,7 @@ export default defineComponent({
       type: String,
       default: "What's up, Joy!",
     },
-    text: {
+    subtitle: {
       type: String,
       default: 'CATEGORIES',
     },
@@ -56,9 +58,9 @@ export default defineComponent({
       ],
     },
   },
-  setup() {
+  setup(props, { emit }) {
     /** 数值比例比 */
-    function useComputedRatio(complete: number, total: number): number {
+    const useComputedRatio = (complete: number, total: number): number => {
       if (complete >= total) {
         return 100
       }
@@ -67,13 +69,15 @@ export default defineComponent({
       }
       return (complete / total) * 100
     }
-
-    function onSearch() {
-      // alert('点击搜索,功能未实现')
+    /** 点击搜索处理 */
+    const onSearch = () => {
+      alert('点击搜索,交给调用方实现')
+      emit('on-search')
     }
-
-    function onNotice() {
-      // alert('点击通知,功能未实现')
+    /** 点击通知处理 */
+    const onNotice = () => {
+      alert('点击通知,交给调用方实现')
+      emit('on-notice')
     }
 
     return {
@@ -88,13 +92,13 @@ export default defineComponent({
 <style lang="scss" scoped>
 .com-panel {
   .panel-top {
-    box-sizing: border-box;
     width: 100%;
     height: 72px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     padding: 0 24px;
+    box-sizing: border-box;
     span {
       display: inline-block;
       width: 36px;
@@ -107,6 +111,9 @@ export default defineComponent({
         font-size: 24px;
       }
     }
+    span:active {
+      transform: scale(1.03);
+    }
   }
   .panel-title {
     font-size: 36px;
@@ -115,7 +122,7 @@ export default defineComponent({
   }
   .panel-content {
     padding: 10px 0 20px 0;
-    .panel-text {
+    .panel-subtitle {
       font-size: 14px;
       font-weight: 600;
       color: #999;
@@ -142,23 +149,26 @@ export default defineComponent({
           font-size: 24px;
           color: #000;
         }
+        /** progress-bar */
         .task-progress {
+          background-color: rgb(199, 199, 199);
+          margin-top: 8px;
+        }
+        .task-progress-bar {
+          height: 6px;
+          width: 100%;
+          border-radius: 4px;
+        }
+        .task-progress-hover {
+          background-color: #5e3df0;
+          width: 0%;
+          transition: all 0.3s linear;
         }
       }
-      /** progress-bar */
-      .task-progress {
-        background-color: rgb(199, 199, 199);
-        margin-top: 8px;
-      }
-      .task-progress-bar {
-        height: 6px;
-        width: 100%;
-        border-radius: 4px;
-      }
-      .task-progress-hover {
-        background-color: #7889e7;
-        width: 0%;
-        transition: all 0.3s linear;
+      & > .task-box:nth-child(2n) {
+        .task-progress-hover {
+          background-color: #de3ae4;
+        }
       }
     }
   }
